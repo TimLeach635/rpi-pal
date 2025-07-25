@@ -1,9 +1,11 @@
 # rpi-pal – Raspberry Pi Peripheral Access Library
 
-[![Build status](https://github.com/TimLeach635/rpi-pal/actions/workflows/ci.yml/badge.svg)](https://github.com/TimLeach635/rpi-pal/actions/workflows/ci.yml)
+[![Build status](https://github.com/rpi-pal/rpi-pal/actions/workflows/ci.yml/badge.svg)](https://github.com/rpi-pal/rpi-pal/actions/workflows/ci.yml)
 [![Latest release](https://img.shields.io/crates/v/rpi-pal)](https://crates.io/crates/rpi-pal)
 [![Minimum rustc version](https://img.shields.io/badge/rustc-v1.60.0-lightgray.svg)](https://blog.rust-lang.org/2022/04/07/Rust-1.60.0.html)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![Deps.rs Crate Dependencies (latest)](https://img.shields.io/deps-rs/rpi-pal/latest)
+
 
 ## Fork of RPPAL
 
