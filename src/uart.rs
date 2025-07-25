@@ -1,6 +1,6 @@
 //! Interface for the UART peripherals and any USB to serial adapters.
 //!
-//! RPPAL controls the Raspberry Pi's UART peripherals through the `ttyAMA0`
+//! rpi-pal controls the Raspberry Pi's UART peripherals through the `ttyAMA0`
 //! (PL011) and `ttyS0` (mini UART) character devices. USB to serial adapters
 //! are controlled using the `ttyUSBx` and `ttyACMx` character devices.
 //!
@@ -405,7 +405,7 @@ struct UartInner {
 /// serial adapters.
 ///
 /// The `embedded-hal` trait implementations for `Uart` can be enabled by specifying
-/// the optional `hal` feature in the dependency declaration for the `rppal` crate.
+/// the optional `hal` feature in the dependency declaration for the `rpi_pal` crate.
 #[derive(Debug)]
 pub struct Uart {
     inner: UartInner,

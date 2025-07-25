@@ -17,7 +17,7 @@ use std::error::Error;
 use std::thread;
 use std::time::Duration;
 
-use rppal::pwm::{Channel, Polarity, Pwm};
+use rpi_pal::pwm::{Channel, Polarity, Pwm};
 
 // Servo configuration. Change these values based on your servo's verified safe
 // minimum and maximum values.

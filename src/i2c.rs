@@ -1,7 +1,7 @@
 //! Interface for the I2C peripheral.
 //!
 //! The Broadcom Serial Controller (BSC) peripheral controls a proprietary bus
-//! compliant with the I2C bus/interface. RPPAL communicates with the BSC
+//! compliant with the I2C bus/interface. rpi-pal communicates with the BSC
 //! using the `i2cdev` device interface.
 //!
 //! ## I2C buses
@@ -155,7 +155,7 @@ pub enum Error {
     /// The Raspberry Pi model or SoC can't be identified. Support for
     /// new models is usually added shortly after they are officially
     /// announced and available to the public. Make sure you're using
-    /// the latest release of RPPAL.
+    /// the latest release of rpi-pal.
     ///
     /// You may also encounter this error if your Linux distribution
     /// doesn't provide any of the common user-accessible system files
@@ -203,7 +203,7 @@ pub type Result<T> = result::Result<T, Error>;
 /// [specification].
 ///
 /// The `embedded-hal` trait implementations for `I2c` can be enabled by specifying
-/// the optional `hal` feature in the dependency declaration for the `rppal` crate.
+/// the optional `hal` feature in the dependency declaration for the `rpi_pal` crate.
 ///
 /// [here]: index.html#i2c-buses
 /// [specification]: http://smbus.org/specs/SMBus_3_1_20180319.pdf

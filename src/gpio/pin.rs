@@ -262,7 +262,7 @@ macro_rules! impl_eq {
 /// provides access to additional methods relevant to the selected pin mode.
 ///
 /// The `embedded-hal` trait implementations for `Pin` can be enabled by specifying
-/// the optional `hal` feature in the dependency declaration for the `rppal` crate.
+/// the optional `hal` feature in the dependency declaration for the `rpi_pal` crate.
 ///
 /// [`Gpio::get`]: struct.Gpio.html#method.get
 /// [`InputPin`]: struct.InputPin.html
@@ -420,7 +420,7 @@ impl_eq!(Pin);
 /// interrupt trigger events.
 ///
 /// The `embedded-hal` trait implementations for `InputPin` can be enabled by specifying
-/// the optional `hal` feature in the dependency declaration for the `rppal` crate.
+/// the optional `hal` feature in the dependency declaration for the `rpi_pal` crate.
 ///
 /// [`Pin`]: struct.Pin.html
 /// [`Mode::Input`]: enum.Mode.html#variant.Input
@@ -582,7 +582,7 @@ impl_eq!(InputPin);
 /// An `OutputPin` can be used to change a pin's output state.
 ///
 /// The `embedded-hal` trait implementations for `OutputPin` can be enabled by specifying
-/// the optional `hal` feature in the dependency declaration for the `rppal` crate.
+/// the optional `hal` feature in the dependency declaration for the `rpi_pal` crate.
 ///
 /// [`Pin`]: struct.Pin.html
 /// [`Mode::Output`]: enum.Mode.html#variant.Output
@@ -679,7 +679,7 @@ impl_eq!(OutputPin);
 /// to [`Mode::Input`].
 ///
 /// The `embedded-hal` trait implementations for `IoPin` can be enabled by specifying
-/// the optional `hal` feature in the dependency declaration for the `rppal` crate.
+/// the optional `hal` feature in the dependency declaration for the `rpi_pal` crate.
 ///
 /// [`Pin`]: struct.Pin.html
 /// [`Mode::Input`]: enum.Mode.html#variant.Input

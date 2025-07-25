@@ -39,7 +39,7 @@ pub enum Error {
     ///
     /// Support for new models is usually added shortly after they are officially
     /// announced and available to the public. Make sure you're using the latest
-    /// release of RPPAL.
+    /// release of rpi-pal.
     ///
     /// You may also encounter this error if your Linux distribution
     /// doesn't provide any of the common user-accessible system files

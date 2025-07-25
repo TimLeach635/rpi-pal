@@ -1,6 +1,6 @@
 //! Interface for the PWM peripheral.
 //!
-//! RPPAL controls the Raspberry Pi's PWM peripheral through the `pwm` sysfs
+//! rpi-pal controls the Raspberry Pi's PWM peripheral through the `pwm` sysfs
 //! interface.
 //!
 //! ## PWM channels
@@ -84,7 +84,7 @@ pub enum Error {
     /// The Raspberry Pi model or SoC can't be identified. Support for
     /// new models is usually added shortly after they are officially
     /// announced and available to the public. Make sure you're using
-    /// the latest release of RPPAL.
+    /// the latest release of rpi-pal.
     ///
     /// You may also encounter this error if your Linux distribution
     /// doesn't provide any of the common user-accessible system files
@@ -96,7 +96,7 @@ pub enum Error {
     /// encounter this error if the Raspberry Pi model only has a limited
     /// number of channels, the selected channel hasn't been properly
     /// configured in `/boot/firmware/config.txt`, or the channel isn't
-    /// supported by RPPAL.
+    /// supported by rpi-pal.
     InvalidChannel,
 }
 
@@ -182,7 +182,7 @@ impl fmt::Display for Polarity {
 /// and activated. More information can be found [here].
 ///
 /// The `embedded-hal` trait implementations for `Pwm` can be enabled by specifying
-/// the optional `hal` feature in the dependency declaration for the `rppal` crate.
+/// the optional `hal` feature in the dependency declaration for the `rpi_pal` crate.
 ///
 /// [here]: index.html
 #[derive(Debug)]

@@ -4,8 +4,8 @@
 use std::error::Error;
 use std::fmt;
 
-use rppal::gpio::Gpio;
-use rppal::system::{DeviceInfo, Model};
+use rpi_pal::gpio::Gpio;
+use rpi_pal::system::{DeviceInfo, Model};
 
 enum PinType {
     Gpio(u8),

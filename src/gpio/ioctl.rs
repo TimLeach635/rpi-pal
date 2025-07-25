@@ -17,7 +17,7 @@ type IoctlLong = libc::c_ulong;
 type IoctlLong = c_int;
 
 const PATH_GPIOCHIP: &str = "/dev/gpiochip";
-const CONSUMER_LABEL: &str = "RPPAL";
+const CONSUMER_LABEL: &str = "rpi-pal";
 const DRIVER_NAME: &[u8] = b"pinctrl-bcm2835\0";
 const DRIVER_NAME_BCM2711: &[u8] = b"pinctrl-bcm2711\0";
 const DRIVER_NAME_BCM2712: &[u8] = b"pinctrl-rp1\0";

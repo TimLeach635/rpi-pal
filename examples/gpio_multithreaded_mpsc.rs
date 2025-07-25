@@ -9,7 +9,7 @@ use std::sync::mpsc::channel;
 use std::thread;
 use std::time::Duration;
 
-use rppal::gpio::Gpio;
+use rpi_pal::gpio::Gpio;
 
 // Gpio uses BCM pin numbering. BCM GPIO 23 is tied to physical pin 16.
 const GPIO_LED: u8 = 23;
@@ -18,7 +18,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     // Construct an asynchronous channel. Sender can be cloned if it needs to be shared with other threads.
     let (sender, receiver) = channel();
 
-    let led_thread = thread::spawn(move || -> Result<(), rppal::gpio::Error> {
+    let led_thread = thread::spawn(move || -> Result<(), rpi_pal::gpio::Error> {
         // Retrieve the GPIO pin and configure it as an output.
         let mut pin = Gpio::new()?.get(GPIO_LED)?.into_output_low();
 

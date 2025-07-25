@@ -2,7 +2,7 @@
 // a non-global shared variable (that can be done using OnceCell for example). This requires a Mutex
 // as it goes across threads, and Arc to make sure we have the same entry everywhere.
 
-use rppal::gpio::{Event, Gpio, Trigger};
+use rpi_pal::gpio::{Event, Gpio, Trigger};
 use std::error::Error;
 use std::sync::{Arc, Mutex};
 use std::time::Duration;

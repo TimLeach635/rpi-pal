@@ -14,7 +14,7 @@ use std::time::Duration;
 // The simple-signal crate is used to handle incoming signals.
 use simple_signal::{self, Signal};
 
-use rppal::gpio::Gpio;
+use rpi_pal::gpio::Gpio;
 
 // Gpio uses BCM pin numbering. BCM GPIO 23 is tied to physical pin 16.
 const GPIO_LED: u8 = 23;

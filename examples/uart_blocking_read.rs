@@ -3,7 +3,7 @@
 use std::error::Error;
 use std::time::Duration;
 
-use rppal::uart::{Parity, Uart};
+use rpi_pal::uart::{Parity, Uart};
 
 fn main() -> Result<(), Box<dyn Error>> {
     // Connect to the primary UART and configure it for 115.2 kbit/s, no

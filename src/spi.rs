@@ -1,6 +1,6 @@
 //! Interface for the main and auxiliary SPI peripherals.
 //!
-//! RPPAL provides access to the available SPI buses by using the `spidev` device
+//! rpi-pal provides access to the available SPI buses by using the `spidev` device
 //! interface through `/dev/spidevB.S`, where B refers to an SPI bus, and S to
 //! a Slave Select pin. Which buses and pins are available depends on your
 //! Raspberry Pi model and configuration, as explained below.
@@ -411,7 +411,7 @@ impl fmt::Display for BitOrder {
 /// and Slave Select pins enabled. More information can be found [here].
 ///
 /// The `embedded-hal` trait implementations for `Spi` can be enabled by specifying
-/// the optional `hal` feature in the dependency declaration for the `rppal` crate.
+/// the optional `hal` feature in the dependency declaration for the `rpi_pal` crate.
 ///
 /// [here]: index.html
 pub struct Spi {

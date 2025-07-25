@@ -12,7 +12,7 @@ use std::error::Error;
 use std::thread;
 use std::time::Duration;
 
-use rppal::gpio::Gpio;
+use rpi_pal::gpio::Gpio;
 
 // Gpio uses BCM pin numbering. BCM GPIO 23 is tied to physical pin 16.
 const GPIO_LED: u8 = 23;

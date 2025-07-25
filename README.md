@@ -1,44 +1,25 @@
-# RPPAL - Raspberry Pi Peripheral Access Library
+# rpi-pal – Raspberry Pi Peripheral Access Library
 
-[![Build status](https://github.com/golemparts/rppal/actions/workflows/ci.yml/badge.svg)](https://github.com/golemparts/rppal/actions/workflows/ci.yml)
-[![Latest release](https://img.shields.io/crates/v/rppal)](https://crates.io/crates/rppal)
+[![Build status](https://github.com/TimLeach635/rpi-pal/actions/workflows/ci.yml/badge.svg)](https://github.com/TimLeach635/rpi-pal/actions/workflows/ci.yml)
 [![Minimum rustc version](https://img.shields.io/badge/rustc-v1.60.0-lightgray.svg)](https://blog.rust-lang.org/2022/04/07/Rust-1.60.0.html)
-[![Documentation](https://docs.rs/rppal/badge.svg)](https://docs.rs/rppal)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-## This project is no longer maintained
+## Fork of RPPAL
 
-As of July 1, 2025, I have decided to retire RPPAL. This means:
-* No new features will be added.
-* Bug fixes will no longer be provided.
-* Support for new hardware is not planned.
-* Pull requests and issues will no longer be reviewed or addressed.
+This repository is a fork of [RPPAL](https://github.com/golemparts/rppal), which was archived on 2025-07-01. We will be
+maintaining it here, to ensure that projects depending on it can continue.
 
-I want to express my sincere gratitude to everyone who contributed to, used, and supported RPPAL over the years. Your contributions and feedback were invaluable.
+## rpi-pal
 
-### Why have I retired RPPAL?
+rpi-pal provides access to the Raspberry Pi's GPIO, I2C, PWM, SPI and UART peripherals through a user-friendly
+interface. In addition to peripheral access, rpi-pal also offers support for USB to serial adapters.
 
-RPPAL began as a passion project in 2016, nearly nine years ago, when I first started working with electronics and needed a project to work on my Rust skills. Initially, it started out as the GPIO module of my Blinkt library. As the scope expanded to include support for other peripherals, RPPAL was spun off into its own distinct project, evolving into the comprehensive library it is today.
+The library can be used in conjunction with a variety of platform-agnostic drivers through its `embedded-hal` trait
+implementations. Both `embedded-hal` v0.2.7 and v1 are supported.
 
-However, over the past several years, my personal interests and professional focus have shifted away from electronics. As a result, I haven't actively used RPPAL myself for quite some time. I no longer have a dedicated hardware test setup, nor do I plan on adding new Raspberry Pi models to my collection. This makes it impractical to thoroughly test changes or ensure compatibility with new hardware releases.
-
-Maintaining a project requires significant dedication, and without active personal use or the necessary testing environment, it's become challenging to provide the level of attention this project deserves.
-
-### What does this mean for you?
-
-You are welcome to continue using RPPAL. However, please be aware you will not receive any further updates or support. RPPAL works with all Raspberry Pi models released before July 1, 2025, up to and including the Raspberry Pi 5.
-
-#### Forking the project
-
-If you wish to continue its development, you may fork this project under the terms and conditions of the MIT License.
-
-## RPPAL
-
-RPPAL provides access to the Raspberry Pi's GPIO, I2C, PWM, SPI and UART peripherals through a user-friendly interface. In addition to peripheral access, RPPAL also offers support for USB to serial adapters.
-
-The library can be used in conjunction with a variety of platform-agnostic drivers through its `embedded-hal` trait implementations. Both `embedded-hal` v0.2.7 and v1 are supported.
-
-RPPAL requires a recent release of Raspberry Pi OS. Similar Linux distributions may work, but are unsupported. Both GNU and musl `libc` targets are supported. RPPAL is compatible with the Raspberry Pi A, A+, B, B+, 2B, 3A+, 3B, 3B+, 4B, 5, CM, CM 3, CM 3+, CM 4, CM 5, CM 5 Lite, 400, 500, Zero, Zero W and Zero 2 W.
+rpi-pal requires a recent release of Raspberry Pi OS. Similar Linux distributions may work, but are unsupported.
+Both GNU and musl `libc` targets are supported. rpi-pal is compatible with the Raspberry Pi A, A+, B, B+, 2B, 3A+, 3B,
+3B+, 4B, 5, CM, CM 3, CM 3+, CM 4, CM 5, CM 5 Lite, 400, 500, Zero, Zero W and Zero 2 W.
 
 ## Table of contents
 
@@ -59,28 +40,30 @@ RPPAL requires a recent release of Raspberry Pi OS. Similar Linux distributions 
 
 ## Usage
 
-Add a dependency for `rppal` to your `Cargo.toml` using `cargo add rppal`, or by adding the following line to your dependencies section.
+Add a dependency for `rpi-pal` to your `Cargo.toml` using `cargo add rpi-pal`, or by adding the following line to your
+dependencies section.
 
 ```toml
 [dependencies]
-rppal = "0.22.1"
+rpi-pal = "0.22.1"
 ```
 
-If your project requires `embedded-hal` trait implementations, specify either the `hal` or `hal-unproven` feature flag in the dependency declaration.
+If your project requires `embedded-hal` trait implementations, specify either the `hal` or `hal-unproven` feature flag
+in the dependency declaration.
 
 ```toml
 [dependencies]
-rppal = { version = "0.22.1", features = ["hal"] }
+rpi-pal = { version = "0.22.1", features = ["hal"] }
 ```
 
 Call `new()` on any of the peripherals to construct a new instance.
 
 ```rust
-use rppal::gpio::Gpio;
-use rppal::i2c::I2c;
-use rppal::pwm::{Channel, Pwm};
-use rppal::spi::{Bus, Mode, SlaveSelect, Spi};
-use rppal::uart::{Parity, Uart};
+use rpi_pal::gpio::Gpio;
+use rpi_pal::i2c::I2c;
+use rpi_pal::pwm::{Channel, Pwm};
+use rpi_pal::spi::{Bus, Mode, SlaveSelect, Spi};
+use rpi_pal::uart::{Parity, Uart};
 
 let gpio = Gpio::new()?;
 let i2c = I2c::new()?;
@@ -89,19 +72,21 @@ let spi = Spi::new(Bus::Spi0, SlaveSelect::Ss0, 16_000_000, Mode::Mode0)?;
 let uart = Uart::new(115_200, Parity::None, 8, 1)?;
 ```
 
-Access to some peripherals may need to be enabled first through `sudo raspi-config` or by editing `/boot/firmware/config.txt`. Refer to the relevant module's documentation for any required steps.
+Access to some peripherals may need to be enabled first through `sudo raspi-config` or by editing
+`/boot/firmware/config.txt`. Refer to the relevant module's documentation for any required steps.
 
 ## Examples
 
-This example demonstrates how to blink an LED connected to a GPIO pin. Remember to add a resistor of an appropriate value in series, to prevent exceeding the maximum current rating of the GPIO pin and the LED.
+This example demonstrates how to blink an LED connected to a GPIO pin. Remember to add a resistor of an appropriate
+value in series, to prevent exceeding the maximum current rating of the GPIO pin and the LED.
 
 ```rust
 use std::error::Error;
 use std::thread;
 use std::time::Duration;
 
-use rppal::gpio::Gpio;
-use rppal::system::DeviceInfo;
+use rpi_pal::gpio::Gpio;
+use rpi_pal::system::DeviceInfo;
 
 // Gpio uses BCM pin numbering. BCM GPIO 23 is tied to physical pin 16.
 const GPIO_LED: u8 = 23;
@@ -124,7 +109,8 @@ Additional examples can be found in the `examples` directory.
 
 ## Optional features
 
-By default, all optional features are disabled. You can enable a feature by specifying the relevant feature flag(s) in the dependency declaration for `rppal` in your `Cargo.toml`.
+By default, all optional features are disabled. You can enable a feature by specifying the relevant feature flag(s) in
+the dependency declaration for `rpi-pal` in your `Cargo.toml`.
 
 * `hal` - Enables `embedded-hal` trait implementations for all supported peripherals. This doesn't include `unproven` traits.
 * `hal-unproven` - Enables `embedded-hal` trait implementations for all supported peripherals, including traits marked as `unproven`. Note that `embedded-hal`'s `unproven` traits don't follow semver rules. Patch releases may introduce breaking changes.
@@ -133,7 +119,8 @@ By default, all optional features are disabled. You can enable a feature by spec
 
 ### [GPIO](https://docs.rs/rppal/latest/rppal/gpio)
 
-To ensure fast performance, RPPAL controls the GPIO peripheral by directly accessing the registers through either `/dev/gpiomem` or `/dev/mem`. GPIO interrupts are configured using the `gpiochip` character device.
+To ensure fast performance, rpi-pal controls the GPIO peripheral by directly accessing the registers through either
+`/dev/gpiomem` or `/dev/mem`. GPIO interrupts are configured using the `gpiochip` character device.
 
 #### Features
 
@@ -145,7 +132,8 @@ To ensure fast performance, RPPAL controls the GPIO peripheral by directly acces
 
 ### [I2C](https://docs.rs/rppal/latest/rppal/i2c)
 
-The Broadcom Serial Controller (BSC) peripheral controls a proprietary bus compliant with the I2C bus/interface. RPPAL communicates with the BSC using the `i2cdev` character device.
+The Broadcom Serial Controller (BSC) peripheral controls a proprietary bus compliant with the I2C bus/interface. rpi-pal
+communicates with the BSC using the `i2cdev` character device.
 
 #### Features
 
@@ -156,7 +144,7 @@ The Broadcom Serial Controller (BSC) peripheral controls a proprietary bus compl
 
 ### [PWM](https://docs.rs/rppal/latest/rppal/pwm)
 
-RPPAL controls the Raspberry Pi's PWM peripheral through the `pwm` sysfs interface.
+rpi-pal controls the Raspberry Pi's PWM peripheral through the `pwm` sysfs interface.
 
 #### Features
 
@@ -166,7 +154,7 @@ RPPAL controls the Raspberry Pi's PWM peripheral through the `pwm` sysfs interfa
 
 ### [SPI](https://docs.rs/rppal/latest/rppal/spi)
 
-RPPAL controls the Raspberry Pi's main and auxiliary SPI peripherals through the `spidev` character device.
+rpi-pal controls the Raspberry Pi's main and auxiliary SPI peripherals through the `spidev` character device.
 
 #### Features
 
@@ -179,7 +167,8 @@ RPPAL controls the Raspberry Pi's main and auxiliary SPI peripherals through the
 
 ### [UART](https://docs.rs/rppal/latest/rppal/uart)
 
-RPPAL controls the Raspberry Pi's UART peripherals through the `ttyAMA0` (PL011) and `ttyS0` (mini UART) character devices. USB to serial adapters are controlled using the `ttyUSBx` and `ttyACMx` character devices.
+rpi-pal controls the Raspberry Pi's UART peripherals through the `ttyAMA0` (PL011) and `ttyS0` (mini UART) character
+devices. USB to serial adapters are controlled using the `ttyUSBx` and `ttyACMx` character devices.
 
 #### Features
 
@@ -192,11 +181,16 @@ RPPAL controls the Raspberry Pi's UART peripherals through the `ttyAMA0` (PL011)
 
 ## Cross compilation
 
-If you're not working directly on a Raspberry Pi, you'll have to cross-compile your code for the appropriate ARM architecture. Check out [this guide](https://github.com/japaric/rust-cross) for more information, or try the [cross](https://github.com/japaric/cross) project for "zero setup" cross compilation.
+If you're not working directly on a Raspberry Pi, you'll have to cross-compile your code for the appropriate ARM
+architecture. Check out [this guide](https://github.com/japaric/rust-cross) for more information, or try the [cross](https://github.com/japaric/cross) project for "zero setup" cross
+compilation.
 
 ### Cargo
 
-For manual cross-compilation without the use of `cross`, you will need to install the appropriate target. Most Raspberry Pi models either need the `armv7-unknown-linux-gnueabihf` target for 32-bit Linux distributions, or `aarch64-unknown-linux-gnu` for 64-bit. For some models, like the Raspberry Pi Zero, a different target triple is required.
+For manual cross-compilation without the use of `cross`, you will need to install the appropriate target. Most Raspberry
+Pi models either need the `armv7-unknown-linux-gnueabihf` target for 32-bit Linux distributions, or
+`aarch64-unknown-linux-gnu` for 64-bit. For some models, like the Raspberry Pi Zero, a different target triple is
+required.
 
 Install the relevant target using `rustup`.
 
@@ -204,7 +198,8 @@ Install the relevant target using `rustup`.
 rustup target install armv7-unknown-linux-gnueabihf
 ```
 
-In the root directory of your project, create a `.cargo` subdirectory, and save the following snippet to `.cargo/config.toml`.
+In the root directory of your project, create a `.cargo` subdirectory, and save the following snippet to
+`.cargo/config.toml`.
 
 ```toml
 [build]
@@ -213,7 +208,9 @@ target = "armv7-unknown-linux-gnueabihf"
 
 ### Visual Studio Code
 
-The rust-analyzer extension for Visual Studio Code needs to be made aware of the target platform by setting the `rust-analyzer.cargo.target` configuration option. In the root directory of your project, create a `.vscode` subdirectory, and then save the following snippet to `.vscode/settings.json`.
+The rust-analyzer extension for Visual Studio Code needs to be made aware of the target platform by setting the
+`rust-analyzer.cargo.target` configuration option. In the root directory of your project, create a `.vscode`
+subdirectory, and then save the following snippet to `.vscode/settings.json`.
 
 ```json
 {
@@ -223,7 +220,8 @@ The rust-analyzer extension for Visual Studio Code needs to be made aware of the
 
 ## Caution
 
-Always be careful when working with the Raspberry Pi's peripherals, especially if you attach any external components to the GPIO pins. Improper use can lead to permanent damage.
+Always be careful when working with the Raspberry Pi's peripherals, especially if you attach any external components to
+the GPIO pins. Improper use can lead to permanent damage.
 
 ## Copyright and license
 

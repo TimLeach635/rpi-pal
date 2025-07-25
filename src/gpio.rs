@@ -1,6 +1,6 @@
 //! Interface for the GPIO peripheral.
 //!
-//! To ensure fast performance, RPPAL controls the GPIO peripheral by directly
+//! To ensure fast performance, rpi-pal controls the GPIO peripheral by directly
 //! accessing the registers through either `/dev/gpiomem` or `/dev/mem`. GPIO interrupts
 //! are configured using the `gpiochip` character device.
 //!
@@ -59,9 +59,9 @@
 //! use std::thread;
 //! use std::time::Duration;
 //!
-//! use rppal::gpio::Gpio;
+//! use rpi_pal::gpio::Gpio;
 //!
-//! # fn main() -> rppal::gpio::Result<()> {
+//! # fn main() -> rpi_pal::gpio::Result<()> {
 //! let gpio = Gpio::new()?;
 //! let mut pin = gpio.get(23)?.into_output();
 //!
@@ -153,7 +153,7 @@ pub enum Error {
     /// The Raspberry Pi model or SoC can't be identified. Support for
     /// new models is usually added shortly after they are officially
     /// announced and available to the public. Make sure you're using
-    /// the latest release of RPPAL.
+    /// the latest release of rpi-pal.
     ///
     /// You may also encounter this error if your Linux distribution
     /// doesn't provide any of the common user-accessible system files
@@ -216,7 +216,7 @@ impl From<system::Error> for Error {
     }
 }
 
-/// Result type returned from methods that can have `rppal::gpio::Error`s.
+/// Result type returned from methods that can have `rpi_pal::gpio::Error`s.
 pub type Result<T> = result::Result<T, Error>;
 
 /// Pin modes.
