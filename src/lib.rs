@@ -15,7 +15,7 @@
 //! guaranteed until v1.
 
 // Used by rustdoc to link other crates to rpi-pal's docs
-#![doc(html_root_url = "https://docs.rs/rpi-pal/0.22.1")]
+#![doc(html_root_url = "https://docs.rs/rpi-pal/0.22.2")]
 
 #[macro_use]
 mod macros;
